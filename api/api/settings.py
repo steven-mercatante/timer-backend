@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '70u4@bs!nq%ba0vivg4mi9_@p-5u%s0or*p-%9slix_s3r+64o'
+SECRET_KEY = '70u4@bs!nq%ba0vivg4mi9_@p-5u%s0or*p-%9slix_s3r+64o' # TODO: rotate & move to .env
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -119,6 +119,15 @@ AUTHENTICATION_BACKENDS = (
 
 SITE_ID = 1
 
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        # Lock all endpoints down by default
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
