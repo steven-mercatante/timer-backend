@@ -10,6 +10,7 @@
   auth success
   <script>
     // TODO: persist the token from the social auth provider
+    window.opener.postMessage({foo: "bar", answer: 42}, "http://127.0.0.1:3000")
     window.close();
   </script>
 </body>
