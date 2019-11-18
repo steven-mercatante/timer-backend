@@ -1,4 +1,6 @@
-from django.shortcuts import render
+from django.http import HttpResponse
+from django.template import loader
+from rest_framework.authtoken.models import Token
 # from rest_framework_simplejwt.tokens import RefreshToken
 
 
@@ -8,5 +10,10 @@ def auth_success(request):
     #     "refresh": str(refresh_token),
     #     "access": str(refresh_token.access_token),
     # }
-    # print("token:", token)
-    return render(request, 'auth_success.html')
+    token = Token.objects.get(user_id=request.user.id)
+    template = loader.get_template('auth_success.html')
+
+    resp = HttpResponse(template.render({}, request))
+    resp.set_cookie('auth_token', str(token))
+
+    return resp
