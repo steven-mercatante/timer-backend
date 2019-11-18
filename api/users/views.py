@@ -1,3 +1,5 @@
-from django.shortcuts import render
+from django.views.generic import TemplateView
 
-# Create your views here.
+
+class AuthSuccess(TemplateView):
+  template_name = 'auth_success.html'

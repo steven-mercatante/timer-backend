@@ -29,4 +29,5 @@ urlpatterns = [
     path('api/token/verify/', TokenVerifyView.as_view(), name='token_verify'),
     path('api/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('', include('clients.urls')),
+    path('', include('users.urls')),
 ]
