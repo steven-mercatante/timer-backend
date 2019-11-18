@@ -8,7 +8,8 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '70u4@bs!nq%ba0vivg4mi9_@p-5u%s0or*p-%9slix_s3r+64o' # TODO: rotate & move to .env
+# TODO: rotate & move to .env
+SECRET_KEY = '70u4@bs!nq%ba0vivg4mi9_@p-5u%s0or*p-%9slix_s3r+64o'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -78,7 +79,7 @@ DATABASES = {
     }
 }
 
-# Custom User model. 
+# Custom User model.
 # See https://docs.djangoproject.com/en/2.2/topics/auth/customizing/#using-a-custom-user-model-when-starting-a-project
 AUTH_USER_MODEL = 'users.User'
 
@@ -113,7 +114,7 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAuthenticated',
     ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        # 'rest_framework_simplejwt.authentication.JWTAuthentication',
     )
 }
 
