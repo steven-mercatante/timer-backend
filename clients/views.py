@@ -4,8 +4,10 @@ from .serializers import ClientSerializer
 
 
 class ClientViewSet(viewsets.ModelViewSet):
-    queryset = Client.objects.all()  # TODO: limit to currently auth'd user
     serializer_class = ClientSerializer
+
+    def get_queryset(self):
+        return Client.objects.filter(user=self.request.user).all()
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
