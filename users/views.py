@@ -21,6 +21,4 @@ def auth_success(request):
 class LogOutView(APIView):
     def post(self, request):
         request.user.auth_token.delete()
-        resp = Response('logged out')
-        resp.delete_cookie('auth_token')
-        return resp
+        return Response('logged out')
