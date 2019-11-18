@@ -119,7 +119,7 @@ REST_FRAMEWORK = {
 
 # django-allauth
 # Redirect the user to this view after they log in
-LOGIN_REDIRECT_URL = '/auth-success'
+LOGIN_REDIRECT_URL = '/users/auth-success'
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
