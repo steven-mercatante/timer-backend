@@ -1,5 +1,11 @@
-from django.views.generic import TemplateView
+from django.shortcuts import render
+from rest_framework_simplejwt.tokens import RefreshToken
 
 
-class AuthSuccess(TemplateView):
-  template_name = 'auth_success.html'
+def auth_success(request):
+    refresh_token = RefreshToken.for_user(request.user)
+    token = {
+        "refresh": str(refresh_token),
+        "access": str(refresh_token.access_token),
+    }
+    return render(request, 'auth_success.html')

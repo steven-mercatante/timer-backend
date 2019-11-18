@@ -1,3 +1,5 @@
+{% load socialaccount %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,11 +9,15 @@
   <title>Document</title>
 </head>
 <body>
-  auth success
+  {% if user.is_authenticated %}
+  <p>Logged in as {{ user.username }}</p>
+  {% else %}
+  <p>Unable to authenticate</p>
+  {% endif %}
   <script>
     // TODO: persist the token from the social auth provider
     window.opener.postMessage({foo: "bar", answer: 42}, "http://127.0.0.1:3000")
-    window.close();
+    {% comment %} window.close(); {% endcomment %}
   </script>
 </body>
 </html>
