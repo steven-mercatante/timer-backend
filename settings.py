@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'users',
     'clients',
     'projects',
+    'timers',
 
     # Required for auth
     'django.contrib.sites',
