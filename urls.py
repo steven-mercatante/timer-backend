@@ -8,5 +8,6 @@ urlpatterns = [
     path('', include('clients.urls')),
     path('', include('projects.urls')),
     path('', include('timers.urls')),
+    path('', include('timesheets.urls')),
     path('', include('users.urls')),
 ]
