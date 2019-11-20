@@ -148,5 +148,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 CORS_ORIGIN_WHITELIST = [
-    "http://127.0.0.1:3000"  # TODO: remove for prod
+    "http://127.0.0.1:3000",  # TODO: remove for prod
+    "http://localhost:3000",  # TODO: remove for prod
 ]

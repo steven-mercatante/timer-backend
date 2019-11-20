@@ -7,4 +7,5 @@ router.register(r'entries', views.EntryViewSet, basename='Entry')
 
 urlpatterns = [
     path('', include(router.urls)),
+    path('summaries', views.SummaryView.as_view(), name='timesheet-summary')
 ]
