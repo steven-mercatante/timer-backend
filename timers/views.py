@@ -34,11 +34,15 @@ class TimerStartView(APIView):
     def post(self, request):
         timer = find_timer(request)
         timer_start = TimerStart.objects.create(timer=timer)
-        return Response(TimerStartSerializer(timer_start).data)
+        return Response({
+            "created_at": int(timer_start.created_at.timestamp())
+        })
 
 
 class TimerStopView(APIView):
     def post(self, request):
         timer = find_timer(request)
         timer_stop = TimerStop.objects.create(timer=timer)
-        return Response(TimerStopSerializer(timer_stop).data)
+        return Response({
+            "created_at": int(timer_stop.created_at.timestamp())
+        })

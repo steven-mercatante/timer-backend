@@ -7,10 +7,18 @@ class TimerSerializer(serializers.ModelSerializer):
     stops = serializers.SerializerMethodField()
 
     def get_starts(self, obj):
-        return [t for t in TimerStart.objects.filter(timer=obj.id).values_list('created_at')]
+        return [
+            int(t.timestamp())
+            for t
+            in TimerStart.objects.filter(timer=obj.id).values_list('created_at', flat=True)
+        ]
 
     def get_stops(self, obj):
-        return [t for t in TimerStop.objects.filter(timer=obj.id).values_list('created_at')]
+        return [
+            int(t.timestamp())
+            for t
+            in TimerStop.objects.filter(timer=obj.id).values_list('created_at', flat=True)
+        ]
 
     class Meta:
         model = Timer
