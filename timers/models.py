@@ -10,11 +10,24 @@ class Timer(models.Model):
     )
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
     task = models.CharField(max_length=255)
-    # TODO: use array or json field once I switch to Postgres
-    # TODO: might want to initialize with current time when creating new record
-    starts = models.TextField(default="[]")
-    # TODO: use array or json field once I switch to Postgres
-    stops = models.TextField(default="[]")
     running = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+
+class TimerStart(models.Model):
+    """Tracks any time a timer was started."""
+    timer = models.ForeignKey(
+        Timer,
+        on_delete=models.CASCADE
+    )
+    created_at = models.DateTimeField(auto_now_add=True)
+
+
+class TimerStop(models.Model):
+    """Tracks any time a timer was stopped."""
+    timer = models.ForeignKey(
+        Timer,
+        on_delete=models.CASCADE
+    )
+    created_at = models.DateTimeField(auto_now_add=True)
